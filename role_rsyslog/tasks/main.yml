@@ -18,6 +18,6 @@
     - inventory_hostname == 'Server'
 
 - name: Configure RSyslog Clients 
-  include_tasks: clinets.yaml
+  include_tasks: clients.yaml
   when:
     - not inventory_hostname == 'Server'
