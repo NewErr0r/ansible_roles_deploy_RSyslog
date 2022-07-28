@@ -1,0 +1,10 @@
+[Server]
+Server ansible_ssh_host=192.168.0.151
+
+[Clients]
+192.168.0.152
+192.168.0.153
+
+[all:vars]
+ansible_ssh_user = root
+ansible_ssh_pass = toor

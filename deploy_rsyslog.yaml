@@ -1,0 +1,7 @@
+---
+- name: Deploy RSyslog Server and Clients
+  hosts: all
+  become: true
+
+  roles: 
+    - role_rsyslog

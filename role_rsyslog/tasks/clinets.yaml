@@ -1,0 +1,13 @@
+---
+- name: Started and Enabled RSyslog
+  service: 
+    name: rsyslog 
+    enabled: true 
+    state: started 
+
+- name: Configure RSyslog Clients
+  template: 
+    src: all.conf.j2
+    dest: "{{ client_path }}"
+  notify: 
+    - Restart RSyslog

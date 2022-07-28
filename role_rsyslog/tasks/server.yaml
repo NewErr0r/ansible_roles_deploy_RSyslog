@@ -1,0 +1,22 @@
+--- 
+- name: Disabled SELinux now
+  shell: setenforce 0  
+  when: ansible_selinux.status == "enabled"
+  
+- name: Disabled SELinux 
+  ansible.posix.selinux:
+    state: disabled
+  when: ansible_selinux.status == "enabled"
+
+- name: Started and Enabled RSyslog
+  service: 
+    name: rsyslog 
+    enabled: true 
+    state: started 
+
+- name: Configure rsyslog.conf 
+  template:
+    src: rsyslog.conf.j2
+    dest: '{{ server_path }}'
+  notify:
+    - Restart RSyslog

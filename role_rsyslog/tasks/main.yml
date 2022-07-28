@@ -1,0 +1,23 @@
+---
+- name: Configuration Firewalld 
+  firewalld:
+    port: '{{ item }}'
+    permanent: yes
+    state: enabled
+  loop:
+    - "514/udp"
+    - "514/tcp"
+  notify:
+    - Restart Firewalld
+  when: 
+    - ansible_os_family == 'RedHat'
+
+- name: Configure RSyslog Server 
+  include_tasks: server.yaml
+  when:
+    - inventory_hostname == 'Server'
+
+- name: Configure RSyslog Clients 
+  include_tasks: clinets.yaml
+  when:
+    - not inventory_hostname == 'Server'

@@ -1,0 +1,10 @@
+---
+- name: Restart Firewalld
+  service: 
+    name: firewalld 
+    state: restarted
+
+- name: Restart RSyslog
+  service: 
+    name: rsyslog 
+    state: restarted

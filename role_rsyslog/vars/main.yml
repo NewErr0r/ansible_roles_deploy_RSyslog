@@ -1,0 +1,3 @@
+---
+server_path: /etc/rsyslog.conf
+client_path: /etc/rsyslog.d/all.conf
